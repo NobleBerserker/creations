@@ -1,3 +1,7 @@
+.dropdown-menu {
+  z-index: 1000;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -8,21 +12,20 @@
   color: #6c757d;
   display: flex;
   align-items: center;
-  z-index: 10;
+  z-index: 1050;
   border-bottom: 2px solid #dee2e6;
+  padding-left:40px;
 }
 
 .menuItem {
-  margin-left: 40px;
   text-decoration: none;
   color: #007bff;
   cursor: pointer;
 }
 
-button.xmls,
-button.xmls:hover {
-  background-color: transparent !important;
-  border: none !important;
+.header button {
+  color: #007bff;
+  cursor: pointer;
 }
 
 .icon {

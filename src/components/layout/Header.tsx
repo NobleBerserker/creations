@@ -1,37 +1,74 @@
 "use client";
 
-import React, { Fragment, useState } from 'react';
-import { Dropdown } from 'react-bootstrap';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import UserIcon from './UserIcon';
-import classes from './Header.module.css';
-
+import React, { Fragment, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import UserIcon from "./UserIcon";
+import classes from "./Header.module.css";
 
 const Header: React.FC = () => {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleMouseEnter = () => { if (navigator.onLine) setIsOpen(true); };
-  const handleMouseLeave = () => { setTimeout(() => setIsOpen(false), 300); };
-  const handleLinkClick = (url: string) => { router.push(url); };
+  const handleLinkClick = (url: string) => {
+    router.push(url);
+    setDropdownOpen(false); 
+  };
+
+  let timeoutId: NodeJS.Timeout;
+
+	const handleMouseEnter = () => {
+  		clearTimeout(timeoutId); // cancel pending close
+  		setDropdownOpen(true);
+	};
+
+	const handleMouseLeave = () => {
+  		timeoutId = setTimeout(() => {
+    	setDropdownOpen(false);
+  		}, 200); 
+	};
 
   return (
     <Fragment>
-      <header className={`${classes.header} ${classes.notPrintable}`}>
+      <header className={`${classes.header} ${classes.notPrintable} flex items-center gap-6`}>
         <Link href="/" className={classes.menuItem}>Home</Link>
         <Link href="/Categories" className={classes.menuItem}>Categories</Link>
-        <Dropdown show={isOpen} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <Dropdown.Toggle className={classes.xmls} id="xmls-dropdown">
-            <Link href="/brands" className={classes.menuItem}>Brands</Link>
-          </Dropdown.Toggle>
-          {isOpen && (
-            <Dropdown.Menu onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-              <Dropdown.Item onClick={() => handleLinkClick('/firstItem')}>First</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleLinkClick('/secondItem')}>Second</Dropdown.Item>
-            </Dropdown.Menu>
+
+        <div 
+          className="relative"
+  		  onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button
+            className={`${classes.brands} hover:bg-gray-200 rounded`}
+          >
+            Brands
+          </button>
+
+          {isDropdownOpen && (
+            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50">
+              <button 
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                onClick={() => handleLinkClick("/brands")}
+              >
+                All Brands
+              </button>
+              <button 
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                onClick={() => handleLinkClick("/firstItem")}
+              >
+                First
+              </button>
+              <button 
+                className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                onClick={() => handleLinkClick("/secondItem")}
+              >
+                Second
+              </button>
+            </div>
           )}
-        </Dropdown>
+        </div>
+
         <Link href="/user-login" className={classes.icon}><UserIcon /></Link>
       </header>
     </Fragment>
