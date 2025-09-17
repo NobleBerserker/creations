@@ -43,7 +43,6 @@ export default function Home() {
           <Link
             key={product.id}
             href={product.href}
-            className="border bg-[#e1d9cc] px-4"
           >
             <Image
               src={product.image}
@@ -53,6 +52,7 @@ export default function Home() {
               className="object-contain"
             />
             <p className="text-center mt-2 font-medium">{product.name}</p>
+            <p className="text-center mt-2 font-medium">{product.price}€</p>
           </Link>
         ))}
       </div>

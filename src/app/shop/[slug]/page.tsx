@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function ProductPage() {
   const params = useParams();
-  const slug = params.slug; 
+  const slug = params.slug as string;
 
   const product = products.find(p => p.href.includes(slug));
 

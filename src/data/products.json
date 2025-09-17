@@ -1,12 +1,12 @@
 [
-  { "id": 1, "name": "Autumn Breeze Sweater", "image": "/products/Fall-Collection-2025.png", "href": "/shop/autumn-breeze-sweater", "price": 49.99, "category": "Tops", "featured": false},
-  { "id": 2, "name": "Maplewood Jacket", "image": "/products/Fall-Collection-2025.png", "href": "/shop/maplewood-jacket", "price": 79.99, "category": "Jackets", "featured": true},
+  { "id": 1, "name": "Autumn Breeze Sweater", "image": "/products/Autumn-Breeze-Sweater.png", "href": "/shop/autumn-breeze-sweater", "price": 49.99, "category": "Tops", "featured": true},
+  { "id": 2, "name": "Maplewood Jacket", "image": "/products/Maplewood-Jacket.png", "href": "/shop/maplewood-jacket", "price": 79.99, "category": "Jackets", "featured": false},
   { "id": 3, "name": "Golden Hour Dress", "image": "/products/Fall-Collection-2025.png", "href": "/shop/golden-hour-dress", "price": 59.99, "category": "Dresses", "featured": true },
-  { "id": 4, "name": "Cider Lane Cardigan", "image": "/products/Fall-Collection-2025.png", "href": "/shop/cider-lane-cardigan", "price": 39.99, "category": "Tops", "featured": false },
+  { "id": 4, "name": "Cider Lane Cardigan", "image": "/products/Cider-Lane-Cardigan.png", "href": "/shop/cider-lane-cardigan", "price": 39.99, "category": "Tops", "featured": false },
   { "id": 5, "name": "Crimson Peak Coat", "image": "/products/Fall-Collection-2025.png", "href": "/shop/crimson-peak-coat", "price": 89.99, "category": "Jackets", "featured": true },
   { "id": 6, "name": "Harvest Moon Scarf", "image": "/products/Fall-Collection-2025.png", "href": "/shop/harvest-moon-scarf", "price": 29.99, "category": "Accessories", "featured": false },
-  { "id": 7, "name": "Amber Glow Dress", "image": "/products/Fall-Collection-2025.png", "href": "/shop/amber-glow-dress", "price": 69.99, "category": "Dresses", "featured": true },
-  { "id": 8, "name": "Oakwood Pullover", "image": "/products/Fall-Collection-2025.png", "href": "/shop/oakwood-pullover", "price": 54.99, "category": "Tops", "featured": true },
+  { "id": 7, "name": "Amber Glow Dress", "image": "/products/Fall-Collection-2025.png", "href": "/shop/amber-glow-dress", "price": 69.99, "category": "Dresses", "featured": false },
+  { "id": 8, "name": "Oakwood Pullover", "image": "/products/Fall-Collection-2025.png", "href": "/shop/oakwood-pullover", "price": 54.99, "category": "Tops", "featured": false },
   { "id": 9, "name": "Rustic Ridge Jacket", "image": "/products/Fall-Collection-2025.png", "href": "/shop/rustic-ridge-jacket", "price": 99.99, "category": "Jackets", "featured": false },
   { "id": 10, "name": "Amber Fields Beanie", "image": "/products/Fall-Collection-2025.png", "href": "/shop/amber-fields-beanie", "price": 44.99, "category": "Accessories", "featured": true }
 ]
