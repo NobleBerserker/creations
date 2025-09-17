@@ -8,7 +8,7 @@ interface UserIconProps {
   color?: string;          
 }
 
-const UserIcon: React.FC = ({
+const UserIcon: React.FC<UserIconProps> = ({
   className = "",
   size = 32,
   color = "currentColor",
