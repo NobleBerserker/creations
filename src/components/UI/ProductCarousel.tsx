@@ -8,8 +8,18 @@ import 'swiper/css/autoplay';
 import Image from "next/image";
 import Link from "next/link";
 
+interface Product {
+  id: number;
+  name: string;
+  image: string;
+  href: string;
+}
 
-export default function ProductCarousel({ products }) {
+interface ProductCarouselProps {
+  products: Product[];
+}
+
+const ProductCarousel: React.FC<ProductCarouselProps> = ({ products }) =>  {
   return (
     <Swiper
       modules={[Navigation, Pagination, Autoplay]}
@@ -45,3 +55,5 @@ export default function ProductCarousel({ products }) {
     </Swiper>
   );
 }
+
+export default ProductCarousel
