@@ -4,21 +4,22 @@ import React, { Fragment, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import UserIcon from "./UserIcon";
+import ShoppingCart from "./ShoppingCart";
 import classes from "./Header.module.css";
 
 const Header: React.FC = () => {
   const router = useRouter();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  const handleLinkClick = (url: string) => {
-    router.push(url);
-    setDropdownOpen(false); 
-  };
+  // const handleLinkClick = (url: string) => {
+  //   router.push(url);
+  //   setDropdownOpen(false); 
+  // };
 
   let timeoutId: NodeJS.Timeout;
 
 	const handleMouseEnter = () => {
-  		clearTimeout(timeoutId); // cancel pending close
+  		clearTimeout(timeoutId); 
   		setDropdownOpen(true);
 	};
 
@@ -30,46 +31,57 @@ const Header: React.FC = () => {
 
   return (
     <Fragment>
-      <header className={`${classes.header} ${classes.notPrintable} flex items-center gap-6`}>
-        <Link href="/" className={classes.menuItem}>Home</Link>
-        <Link href="/Categories" className={classes.menuItem}>Categories</Link>
+      <header className="
+        fixed top-0 left-0 w-full h-20 bg-gray-100 text-gray-500 flex items-center
+        border-b-2 border-gray-300 px-10 z-[1050] print:hidden
+        overflow-x-auto md:overflow-visible
+      ">
+        <Link href="/" className="text-blue-600 cursor-pointer ml-0 md:ml-0">
+          Home
+        </Link>
+        <Link href="/Categories" className="text-blue-600 cursor-pointer ml-4 md:ml-4">
+          Categories
+        </Link>
 
-        <div 
-          className="relative"
-  		  onMouseEnter={handleMouseEnter}
+        <div
+          className="relative ml-4"
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button
-            className={`${classes.brands} hover:bg-gray-200 rounded`}
-          >
+          <div className="text-blue-600 cursor-pointer">
             Brands
-          </button>
-
+          </div>
           {isDropdownOpen && (
-            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-50">
-              <button 
+            <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-[1000] text-blue-600">
+              <Link
+                href="/brands"
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                onClick={() => handleLinkClick("/brands")}
               >
                 All Brands
-              </button>
-              <button 
+              </Link>
+              <Link
+                href="/good-brand"
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                onClick={() => handleLinkClick("/firstItem")}
               >
-                First
-              </button>
-              <button 
+                Good Brand
+              </Link>
+              <Link
+                href="/great-brand"
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
-                onClick={() => handleLinkClick("/secondItem")}
               >
-                Second
-              </button>
+                Great Brand
+              </Link>
             </div>
           )}
         </div>
-
-        <Link href="/user-login" className={classes.icon}><UserIcon /></Link>
+        <div className="ml-auto flex items-center gap-4">
+          <Link href="/cart">
+            <ShoppingCart size={28} className="text-blue-600 hover:text-blue-700" />
+          </Link>
+          <Link href="/user-login">
+            <UserIcon size={28} className="text-blue-600 hover:text-blue-700" />
+          </Link>
+        </div>
       </header>
     </Fragment>
   );
