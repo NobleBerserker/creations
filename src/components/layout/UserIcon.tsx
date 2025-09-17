@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React from "react";
 
 interface UserIconProps {
   className?: string;      
@@ -12,7 +12,7 @@ const UserIcon: React.FC<UserIconProps> = ({
   className = "",
   size = 32,
   color = "currentColor",
-}): JSX.Element => {
+}) => {
   return (
     <svg
       aria-hidden="true"

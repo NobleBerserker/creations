@@ -12,7 +12,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({
   className = "",
   size = 32,
   color = "currentColor",
-}): JSX.Element => {
+}) => {
   return (
     <svg
       aria-hidden="true"
