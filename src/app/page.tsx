@@ -1,20 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProductCarousel from '@/components/UI/ProductCarousel';
+import products from "../data/products.json";
 
-const products = [
-  { id: 1, name: "First Item", image: "/products/Fall-Collection-2025.png", href: "/shop/first-item" },
-  { id: 2, name: "Second Item", image: "/products/Fall-Collection-2025.png", href: "/shop/second-item" },
-  { id: 3, name: "Third Item", image: "/products/Fall-Collection-2025.png", href: "/shop/third-item" },
-  { id: 4, name: "Fourth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/fourth-item" },
-  { id: 5, name: "Fifth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/fifth-item" },
-  { id: 6, name: "Sixth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/sixth-item" },
-  { id: 7, name: "Seventh Item", image: "/products/Fall-Collection-2025.png", href: "/shop/seventh-item" },
-  { id: 8, name: "Eighth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/eighth-item" },
-  { id: 9, name: "Ninth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/ninth-item" },
-  { id: 10, name: "Tenth Item", image: "/products/Fall-Collection-2025.png", href: "/shop/tenth-item" },
-];
+function shuffleArray<T>(array: T[]): T[] {
+  return array
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+}
 
+const carouselItems = shuffleArray(products).slice(0,10);
+const featuredItems = products.filter(p => p.featured);
+const featured = shuffleArray(featuredItems).slice(0, 4);
 
 export default function Home() {
   return (
@@ -41,55 +39,27 @@ export default function Home() {
       </div>
       <h2 className="flex justify-center text-2xl font-bold mt-10">Featured Items</h2>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-16 p10 mt-10">
+          {featured.map(product => (
           <Link
-            href="/shop/first-item"
-            className="border bg-[#e1d9cc] pl-4 pr-4"
+            key={product.id}
+            href={product.href}
+            className="border bg-[#e1d9cc] px-4"
           >
             <Image
-              src="/products/Fall-Collection-2025.png"
-              alt="First Item"
+              src={product.image}
+              alt={product.name}
               width={150}
-              height={38}
+              height={150} // adjust to make image look good
+              className="object-contain"
             />
+            <p className="text-center mt-2 font-medium">{product.name}</p>
           </Link>
-        <Link
-          href="/shop/second-item"
-          className="border bg-[#e1d9cc] pl-4 pr-4"
-        >
-          <Image
-            src="/products/Fall-Collection-2025.png"
-            alt="Second Item"
-            width={150}
-            height={38}
-          />
-        </Link>
-        <Link
-          href="/shop/third-item"
-          className="border bg-[#e1d9cc] pl-4 pr-4"
-        >
-          <Image
-            src="/products/Fall-Collection-2025.png"
-            alt="Third Item"
-            width={150}
-            height={38}
-          />
-        </Link>
-        <Link
-          href="/shop/fourth-item"
-          className="border bg-[#e1d9cc] pl-4 pr-4"
-        >
-          <Image
-            src="/products/Fall-Collection-2025.png"
-            alt="Fourth Item"
-            width={150}
-            height={38}
-          />
-        </Link>
+        ))}
       </div>
       <h2 className="flex justify-center text-2xl font-bold mt-10">Browse our Store</h2>
       <div className="mt-10 flex justify-center">
         <div className="w-full max-w-5xl">
-          <ProductCarousel products={products}/>
+          <ProductCarousel products={carouselItems}/>
         </div>
       </div>
     </div>
