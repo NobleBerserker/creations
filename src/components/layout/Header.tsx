@@ -76,7 +76,7 @@ const Header: React.FC = () => {
           )}
         </div>
         <div className="ml-auto flex items-center gap-4">
-          <CartModal size={28} />
+          <CartModal />
           <Link href="/user-login">
             <UserIcon size={28} className="text-charcoal-600 hover:text-charcoal-700" />
           </Link>
