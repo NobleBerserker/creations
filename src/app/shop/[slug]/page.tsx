@@ -2,12 +2,15 @@
 import { useParams } from "next/navigation";
 import products from "../../../data/products.json";
 import Image from "next/image";
+import { useState } from "react";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductPage() {
   const params = useParams();
   const slug = params.slug as string;
 
   const product = products.find(p => p.href.includes(slug));
+  const { addToCart } = useCart();
 
   if (!product) 
   return (
@@ -36,6 +39,19 @@ export default function ProductPage() {
         <h1 className="text-2xl font-bold">{product.name}</h1>
         <p>{product.category}</p>
         <p>{product.price}€</p>
+        <button
+          onClick={() =>
+            addToCart({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image,
+            })
+          }
+          className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition cursor-pointer"
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );

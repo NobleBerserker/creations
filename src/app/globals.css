@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --swiper-theme-color: #6a7282!important;
 }
 
 @theme inline {
@@ -16,6 +17,7 @@
   :root {
     --background: #ddd;
     --foreground: #171717;
+    --swiper-theme-color: #6a7282!important;
   }
 }
 
